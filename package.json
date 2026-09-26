@@ -1,0 +1,10 @@
+{
+  "name": "duster",
+  "version": "1.0.0",
+  "description": "Duster — Personal + Team Workspace. Tasks, Content, Polls, Chat",
+  "scripts": {
+    "server": "cd server && npm start",
+    "client": "cd client && npm start",
+    "test:server": "cd server && node -e \"require('./server.js'); require('./test_api.js');\""
+  }
+}

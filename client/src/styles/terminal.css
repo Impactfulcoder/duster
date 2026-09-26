@@ -1,0 +1,216 @@
+/* DUSTER TERMINAL AESTHETIC CLASSES */
+
+.btn-command {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 10px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: var(--radius-btn);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.btn-command:hover {
+  background-color: var(--surface-hover);
+  border-color: var(--border-focus);
+}
+
+.btn-command.accent {
+  background-color: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+.btn-command.accent:hover {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.btn-command.danger {
+  color: var(--danger);
+  border-color: rgba(255, 73, 63, 0.4);
+}
+
+.btn-command.danger:hover {
+  background-color: var(--danger-bg);
+  border-color: var(--danger);
+}
+
+.terminal-comment {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.terminal-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  position: relative;
+}
+
+/* Priority Badges */
+.badge-priority {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.badge-priority::before {
+  content: '•';
+  font-size: 14px;
+  line-height: 1;
+}
+
+.badge-priority.p0 {
+  color: var(--p0);
+  background: var(--danger-bg);
+}
+
+.badge-priority.p1 {
+  color: var(--p1);
+  background: var(--warning-bg);
+}
+
+.badge-priority.p2 {
+  color: var(--p2);
+  background: var(--info-bg);
+}
+
+.badge-priority.p3 {
+  color: var(--p3);
+  background: rgba(133, 133, 141, 0.15);
+}
+
+.badge-priority.p4 {
+  color: var(--p4);
+  background: rgba(82, 82, 91, 0.15);
+}
+
+/* Status Badges */
+.status-pill {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-pill.not_started {
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.status-pill.in_progress {
+  color: var(--warning);
+  border: 1px solid var(--warning);
+}
+
+.status-pill.completed {
+  color: var(--success);
+  border: 1px solid var(--success);
+}
+
+.status-pill.blocked {
+  color: var(--danger);
+  border: 1px solid var(--danger);
+}
+
+.status-pill.on_hold {
+  color: var(--text-subtle);
+  border: 1px solid var(--border);
+}
+
+/* Modal Backdrop & Container */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.modal-panel {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  width: 100%;
+  max-width: 520px;
+  padding: 24px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: lowercase;
+}
+
+.form-input {
+  width: 100%;
+}
+
+.celebration-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff;
+  color: #000000;
+  padding: 8px 18px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  z-index: 2000;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translate(-50%, 20px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
