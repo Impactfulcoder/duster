@@ -18,6 +18,8 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
+  const [assistantSummary, setAssistantSummary] = useState('');
+  const [assistantLoading, setAssistantLoading] = useState(false);
 
   const fetchData = useCallback(async () => {
     if (!activeWorkspace) return;
@@ -80,6 +82,26 @@ const Dashboard = () => {
       });
     }
     fetchData();
+  };
+
+  const handleWorkspaceAssistant = async () => {
+    if (!activeWorkspace) return;
+
+    try {
+      setAssistantLoading(true);
+      const result = await request('/assistant/workspace-summary', {
+        method: 'POST',
+        body: JSON.stringify({
+          prompt: 'Summarize the current workspace status and suggest the top 3 priorities for the next sprint.',
+        }),
+      });
+      setAssistantSummary(result.answer || 'No summary returned.');
+    } catch (err) {
+      console.error('Failed to generate AI summary:', err);
+      setAssistantSummary(err?.data?.error || 'AI summary is unavailable right now.');
+    } finally {
+      setAssistantLoading(false);
+    }
   };
 
   // Helper date
@@ -181,6 +203,21 @@ const Dashboard = () => {
           >
             [ + new task ]
           </button>
+        </div>
+      </div>
+
+      <div className="terminal-card" style={{ marginBottom: 16 }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, marginBottom: 12 }}>
+          <div>
+            <div style={{ fontSize: 14, fontWeight: 600 }}>workspace AI</div>
+            <div className="terminal-comment">// quick status snapshot</div>
+          </div>
+          <button className="btn-command accent" onClick={handleWorkspaceAssistant} disabled={assistantLoading}>
+            {assistantLoading ? '[ generating... ]' : '[ ask assistant ]'}
+          </button>
+        </div>
+        <div style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: 12, lineHeight: 1.7 }}>
+          {assistantSummary || 'No summary yet. Ask the assistant for a quick workspace recap or next steps.'}
         </div>
       </div>
 

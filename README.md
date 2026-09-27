@@ -44,7 +44,7 @@ npm start
 cd client
 npm start
 ```
-*Opens in browser at `http://localhost:3000`*.
+*Opens in browser at `http://loxcalhost:3000`*.
 
 ---
 
