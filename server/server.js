@@ -17,6 +17,7 @@ const pollRoutes = require('./routes/polls');
 const conversationRoutes = require('./routes/conversations');
 const activityRoutes = require('./routes/activity');
 const analyticsRoutes = require('./routes/analytics');
+const assistantRoutes = require('./routes/assistant');
 
 const app = express();
 const server = http.createServer(app);
@@ -55,6 +56,7 @@ app.use('/api/polls', pollRoutes);
 app.use('/api/conversations', conversationRoutes);
 app.use('/api/activity', activityRoutes);
 app.use('/api/analytics', analyticsRoutes);
+app.use('/api/assistant', assistantRoutes);
 
 // Error Handler Middleware
 app.use(errorHandler);
